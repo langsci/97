@@ -1,3 +1,3 @@
-Georg von der Gabentz
+Georg von der Gabelentz
 
 Die Sprachwissenschaft
