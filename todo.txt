@@ -1,0 +1,125 @@
+2. On p.378 and p.381 I've redrawn the braces in the diagrams using
+tikz. In the first two diagrams, however, the arms are in some places
+too long. I can't use the "shorten <= ..." parameter because it causes
+a bizarre conflict with arabtex. Maybe using "node" would be an
+option. This is, however, beyond me at the moment.
+
+\newcommand{\pushbar}{\hspace*{19mm}\LARGE {\textbar}}
+\begin{table}[h]
+\centering
+\begin{tabular}{c c c c c c}
+& \multicolumn{3}{c}{Der mitzutheilende Gedanke ist} \\
+\multicolumn{1}{l}{\hspace*{.7cm}\tikzmark{urteil}{ }} & & & & \multicolumn{1}{r}{\tikzmark{wunsch}{ }\hspace*{1cm}} & \\
+\multicolumn{2}{c}{A. ein Urtheil. Dies ist} & & \multicolumn{2}{c}{B. ein Wunsch} \\
+\multicolumn{1}{l}{\tikzmark{vollstaendig}{ }} & \multicolumn{1}{r}{\tikzmark{unvollstaendig}{ }} & & \multicolumn{2}{l}{\pushbar} \\
+\multicolumn{1}{l}{a) vollständig} & \multicolumn{1}{r}{b) unvollständig} & & \multicolumn{2}{l}{\pushbar} \\
+ \LARGE {\textbar} & \multicolumn{2}{c}{ \LARGE {\textbar} } & \multicolumn{2}{l}{\pushbar} \\
+ \LARGE {\textbar} & \multicolumn{2}{l}{\tikzmark{frage}{ }} & \multicolumn{2}{r}{\tikzmark{befehl}{ }} \\
+\multicolumn{1}{l}{1. Mittheilung} & \multicolumn{2}{c}{2. Frage} & & \multicolumn{1}{r}{3. Befehl u.~s.~w.}
+\end{tabular}
+\end{table}
+
+\tikz[overlay,remember picture] {
+
+\draw[style={decorate,decoration={brace}}, thick] (urteil) -- (wunsch) node {};
+
+\draw[style={decorate,decoration={brace}}, thick] (vollstaendig) -- (unvollstaendig) node {};
+
+\draw[style={decorate,decoration={brace,aspect=0.68}}, thick] (frage) -- (befehl) node {};
+}
+
+---
+\begin{table}[h]
+\centering
+\tabcolsep=0.5cm
+\begin{tabular}{l r l}
+\multicolumn{3}{c}{Der sprachliche Ausdruck ist} \\
+\tikzmark{geformt}{ } & & \multicolumn{1}{r}{\tikzmark{ungeformt}{ }\hspace*{1cm}} \\
+\multicolumn{1}{c}{A. grammatisch geformt} & & \multicolumn{1}{c}{B. ungeformt} \\
+\tikzmark{vollersatz}{ } & \tikzmark{absolut}{ } & \multicolumn{1}{c}{\LARGE {\textbar}} \\
+\multicolumn{2}{c}{a) voller Satz, b) Ellipse, c) absolut,} & a) nachahmend, \\
+& & b) Empfindungen äussernd, \\
+& & c) deutend, \\
+& & d) fragend . . .
+\end{tabular}
+\end{table}
+
+\tikz[overlay,remember picture] {
+
+\draw[style={decorate,decoration={brace}}, thick] (geformt) -- (ungeformt) node {};
+
+\draw[style={decorate,decoration={brace}}, thick] (vollersatz) -- (absolut) node {};
+}
+
+
+
+
+Problems that ought to be fixed:
+
+1. On p.138 I've used combos of \' and \textbreve{} to get the accent
+signs. This looks too squashed in the head of the second column of the
+table, though.
+
+\begin{table}[h]
+\centering
+\begin{tabular}{r r | l | l | l | l}
+ \multicolumn{2}{r|}{Rhythmen:} &
+      \textsubscript{\LARGE \textbreve{ }\textbreve{ }} & 
+        \textsubscript{\LARGE \raisebox{1.5mm}[1.5mm]{\parbox{0mm}{\hspace*{0.2mm}\centering´}}{\textbreve} \textbreve{ }} &
+      \textsubscript{\LARGE \textbreve{ } ̄} & \enspace \textsubscript{\LARGE ̄\textbreve{ }} u.~s.~w. \\
+\cmidrule(l{2em}){1-6}
+Vocalismen & \textit{aa} & \textit{ăă} & \textit{ắă} & \textit{ăā} & \textit{āă} \\
+ & \textit{ai} & \textit{ăĭ} & \textit{ắĭ} & \textit{ăī} & \textit{āĭ} \\
+ & \textit{ia} & \textit{ĭă} & \textit{\'ĭă} & \textit{ĭā} & \textit{īă}
+\end{tabular}
+\end{table}
+
+
+
+2. On p.369 I've retained the graphic for the music score. Is there a
+way to improve the quality of the image?
+
+gab.pdf, to be sent in separate email
+
+
+
+3. The Egyptological aleph, e.g. on pp.474-475 but also elsewhere, is
+encoded as the correct character and looks *OK*, but not ideal. It
+should really look as in the attached pdf.
+
+
+\newcommand{\ain}{\texttt{{Ꜣ}}\hspace*{-.25mm}}
+\newcommand{\AIN}{\texttt{\hspace*{-.35mm}\textsl{Ꜣ}}\hspace*{-.25mm}}%for use after f
+\sed{Übrigens ist der Consonantismus der Stammbildungen in seiner Art reichlich so interessant, wie der Vocalismus. Nicht nur Prä- und Suffixe und Doppelungen oder Wiederholungen der Stammconsonanten, sondern auch allerhand Infixe kommen vor, darunter einige so vereinzelt, dass sie nicht zum eigentlichen Formativapparate der Sprache gerechnet werden können. Die arabische Grammatik nimmt fünfzehn Formen des dreiconsonantischen Verbums, typische Wurzel \textit{f}{\AIN}\textit{l}, an, darunter solche wie \textit{ifta}{\ain}\textit{ala}, \textit{if}{\AIN}\textit{au}{\ain}\textit{ala}, \textit{if}{\AIN}\textit{awwala}, \textit{if}{\AIN}\textit{anlala}, \textit{if}{\AIN}\textit{anlai}. Diese gelten für regelmässig, wenn auch die vier letztgenannten schon seltener vorkommen. Daneben werden aber noch neunundzwanzig andere, unregelmässige Formen des abgeleiteten Verbums aufgeführt, und unter diesen solche wie {\ain}\textit{af}{\AIN}\textit{ala}, \textit{fa}{\ain}\textit{lasa}, \textit{fa}{\ain}\textit{lana}, \textit{fa}{\ain}\textit{tala}, \textit{fa}{\ain}\textit{mala}, \textit{fa}{\ain}\textit{nala}, \textit{fa}{\ain}\textit{wala}, \textit{fa}{\ain}\textit{yala}, \textit{fan}{\ain}\textit{ala}, \textit{fah}{\ain}\textit{ala}, \textit{fai}{\ain}\textit{ala}, \textit{fau}{\ain}\textit{ala}, \textit{tafah}{\ain}\textit{ala}, \textit{tamf}{\AIN}\textit{ala}, \textit{if}{\AIN}\textit{ammala}, \textit{if}{\AIN}\textit{aulala}, \textit{if}{\AIN}\textit{ayyala}, \textit{ifwan}{\ain}\textit{ala}, \textit{ifwa}{\ain}\textit{alla} u.~s.~w. (Vergl. \textsc{Howell}, Grammar of the Classical Arabic Language, Pt. II, p. 254–257.) Es sind also Halbvocale, Nasale, und dazu \textit{h}, \textit{t} und \textit{s}, lauter sogenannte servile, d.~h. auch sonst der Formbildung dienende} {\textbar}{\textbar}410{\textbar}{\textbar}\phantomsection\label{sp.410} \sed{Laute, die auch hier verwandt werden. Das ist das Gemeinsame und zunächst Bedeutsame, denn es ist die einzige aus den Sprachgesetzen selbst herzuleitende Schranke. Innerhalb ihrer aber scheint so ziemlich Alles erlaubt und jede Willkür dem Sprachgefühle genehm, einer verständnissvollen Aufnahme seitens der Hörenden von vornherein gewiss gewesen zu sein.}
+
+
+
+4. The scans of the respective title pages of the first and second
+editions look a bit wonky to me. I have tried rotating them slightly
+to make them look straight, but I am still not happy. Is there someone
+at LangSci Press that is more adept at this and could get them looking
+perfect?
+
+They look slightly tilted. What exactly would you like us to do?
+
+Other issues:
+
+1. How should the "Vorwort der Herausgeber" be numbered? I currently
+have Roman numbering, which then stops and starts again from i. for
+the actual Vorworte.
+
+you could just drop the page numbering. Or use capital roman numerals. I would not re-use page numbers, as this might lead to confusion
+
+
+2. I have taken on the colours suggested by your designer and think
+they look good. I am happy to leave them as they are. I do wonder,
+however, if the lsDarkBlue is too difficult to tell apart from the
+black of the normal text. I also wonder if the lsRed is too jarring
+for the large sections of text from the second edition. The commands
+for the colours are mostly semantic, but there are a few places in the
+text where they are controlled manually.
+ 
+I forgot to mention that I still cannot solve the problem with the
+sukun in the first marginal correction -- "1891 und 1901" -- on p.435.
+The second sukun in the Arabic word needs to go, but the first should
+stay.
