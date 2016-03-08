@@ -11,7 +11,7 @@
 \PassOptionsToPackage{dvipsnames}{xcolor}
 \documentclass[output=short% short|inprep              
 %  	        ,draftmode  
-		  ]{LSP/langsci}    
+		  ]{langsci/langscibook}    
   
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%                                              %%%
@@ -35,6 +35,13 @@
 %%%                                              %%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{document} 
+\renewcommand{\lsImpressumCitationText}{
+	Georg von der Gabelentz. 
+	{\the\year}. %
+	\textit{Die Sprachwissenschaft}: \textit{Ihre Aufgaben, Methoden und bisherigen Ergebnisse}\ %
+	(\lsSeriesTitle). %
+	Berlin: Language Science Press. Herausgegeben von Manfred Ringmacher und James McElvenny.
+}
 \maketitle
 
 \pagenumbering{Roman}
@@ -79,9 +86,8 @@
 \include{chapters/02}
 \include{chapters/03}
 \include{chapters/04}
-\include{chapters/register}
-% % copy the lines above and adapt as necessary
- 
+\include{chapters/register} 
+\renewcommand{\lsCoverTitleFont}[1]{\sffamily\addfontfeatures{Scale=MatchUppercase}\fontsize{52pt}{16.75mm}\selectfont #1}
 
 % There is normally no need to change the backmatter section
 %\input{backmatter.tex}
