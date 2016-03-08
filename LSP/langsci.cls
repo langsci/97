@@ -105,7 +105,7 @@
 
 
 \usepackage{etex}
-\reserveinserts{18}
+\reserveinserts{28}
 \usepackage{xstring} % Needed on Lines 114ff and again on 167
 \usepackage{graphicx} % Needed twice
 \usepackage{hyphenat} % Needed twice
