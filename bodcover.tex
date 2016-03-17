@@ -10,7 +10,7 @@
 
 \documentclass[output=coverbod% long|short|inprep              
 %  	        ,draftmode  
-		  ]{LSP/langsci}    
+		  ]{langsci/langscibook}    
   
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%                                              %%%
@@ -33,7 +33,10 @@
 %%%             Frontmatter                      %%%
 %%%                                              %%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\begin{document}         
+\begin{document}     
+
+\renewcommand{\lsCoverTitleFont}[1]{\sffamily\addfontfeatures{Scale=MatchUppercase}\fontsize{37pt}{16.75mm}\selectfont #1}
+\renewcommand{\lsSpineAuthor}{Georg von der Gabelentz}
 \maketitle                
 \frontmatter
 % %% uncomment if you have preface and/or acknowledgements
